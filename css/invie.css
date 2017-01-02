@@ -100,6 +100,7 @@ video{
 }
 
 .background {
+  background-color: #466173; /*mientras carga la imagen ponermos este color*/
   background-image: url('../images/background.png');
   background-size: cover;  
 }
@@ -309,6 +310,7 @@ video{
   position: absolute;
   left:20px;
   top:20px;
+  color:white;
   z-index:3;
 }
 
@@ -338,6 +340,20 @@ video{
       max-width: 800px;
     }
   */
+
+  /*precio*/ 
+
+  .table {
+    margin: 50px 20px;
+  }
+
+  .table .contenedor {
+    overflow: auto;
+    border: 1px solid #273B47;
+  }
+
+  /*precio*/ 
+
   /*Portada*/
   .titulo {
     font-size: 45px;
@@ -453,6 +469,14 @@ video{
 
 @media screen and (max-width: 500px){
 
+  .header{
+    position: static;
+  }
+
+  .header .contenedor {
+    position: static;
+  }
+
   .portada .contenedor{
     position: static;
   }
@@ -519,4 +543,13 @@ video{
     font-size: 30px;
   }
   /*guitarras*/
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+/*  body {
+    border: 5px solid red;
+  }*/
+  .background {
+    background-image: url("../images/background2x.png");
+  }
 }
