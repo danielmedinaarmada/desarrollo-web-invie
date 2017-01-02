@@ -5,6 +5,9 @@
     <meta charset="utf-8"/>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Allerta' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/invie.css"/>
+    <!-- <link rel="stylesheet" href="css/media.queries.css" media="(max-width:800px)"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <!-- etiqueta meta datos viewport, nos ayuda a mostrar correctamente nuestro contenido según el área visible del usuario. -->
   </head>
   <body>
     <section id="portada" class="portada background"> <!-- portada -->
@@ -12,7 +15,8 @@
       <figure class="logotipo"> <!-- logotipo -->
         <img src="images/invie.png" width="186" height="60" alt="Invie logotipo"/>
       </figure>
-      <nav class="menu"> <!-- menu -->
+      <span class="burguer-button icon-menu" id="burguer-button"></span>
+      <nav class="menu" id="menu"> <!-- menu -->
         <ul>
           <li>
             <a href="index.html">Home</a>
@@ -34,8 +38,12 @@
     </section>
     <section id="guitarras" class="guitarras contenedor"> <!-- guitarras -->
       <h2>Nuestra guitarras</h2><!-- titulo -->
+      <div class="video-responsive-contenedor">
+        <iframe class="video-responsive-src" width="560" height="315" src="https://www.youtube.com/embed/R1dW8M4EqYY" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <video src="video/320x240.ogg"></video>
       <article class="guitarra"> <!-- guitarra 1 -->
-        <img class="derecha" src="images/invie-acustica.png" alt="Guitarra Invie Acustica" width="350"/>
+        <img class="derecha" data-src="images/invie-acustica.png" alt="Guitarra Invie Acustica" width="350"/>
         <div class="contenedor-guitarra-a">
           <h3 class="title-b">Invie Acustica</h3>
           <ol>
@@ -46,7 +54,7 @@
         </div>
       </article>
       <article class="guitarra b"> <!-- guitarra 2 -->
-        <img class="izquierda" src="images/invie-classic.png" alt="Guitarra Invie Classic" width="350"/>
+        <img class="izquierda" data-src="images/invie-classic.png" alt="Guitarra Invie Classic" width="350"/>
         <div class="contenedor-guitarra-b">
           <h3 class="title-b">Invie Classic</h3>
           <ol>
@@ -60,18 +68,16 @@
     <footer class="footer">
       <div class="contenedor">
         <div class="contacto"> 
-          <img src="images/invie-white.png" alt="logotipo blanco"/>
+          <img data-src="images/invie-white.png" alt="logotipo blanco"/>
           <a href="tel:+573024456678"><strong>Telefono</strong> <span>3024456678</span></a>
           <a href="mailto:contacto@invie.com"><strong>E-mail</strong> <span>contacto@invie.com</span></a>
         </div>
         <form class="formulario">
           <div class="col1">
-            <label for="nombre">Nombre:
-              <input type="text" required="" id="nombre" name="nombre"/>
-            </label>
-            <label for="email">E-mail:
-              <input type="email" required="" id="email" name="email"/>
-            </label>
+            <label for="nombre">Nombre:</label>
+            <input type="text" required="" id="nombre" name="nombre"/>
+            <label for="email">E-mail:</label>
+            <input type="email" required="" id="email" name="email"/>
             <div class="sexo">
               <label for="mujer">
                 <input type="radio" id="mujer" checked="" name="sexo"/>Mujer
@@ -104,5 +110,38 @@
         </form>
       </div>
     </footer>
+    <!-- busco en mi cdn la libreria: https://cdnjs.com/ be lazy-->
+    <<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
+    <script>
+      var consulta = window.matchMedia('(max-width: 500px)');
+      consulta.addListener(mediaQuery);
+      var burguerButton = document.getElementById('burguer-button');
+      var menu = document.getElementById('menu');
+      function toggleMenu(){
+        menu.classList.toggle('active');
+      };
+
+      function mediaQuery() {
+        if (consulta.matches) {
+          //se cumple la condición
+          console.log('sí se cumple la condición');
+          burguerButton.addEventListener('touchstart', toggleMenu);
+        } else {
+          //no se cumple la condición
+          console.log('no se cumple la condición');
+          burguerButton.removeEventListener('touchstart', toggleMenu);
+        }
+      };
+
+      mediaQuery();
+
+      //ahora usamos la libreria be lazy para que cargue las imagenes a medida de que haga scroll
+      //lazy loading
+      var bLazy = new Blazy({
+          // options
+          selector:'img'
+      });
+
+    </script>
   </body>
 </html>
