@@ -307,17 +307,31 @@ video{
   display: inline-block;
   text-align: center;
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   left:20px;
   top:20px;
   color:white;
   z-index:3;
+  display:none;
+}
+
+.video-demo-contenedor {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.video-demo {
+  max-width: 500px;
+  width: 100%;
+  /*margin:0 auto 80px;*/
+  border: 5px solid #3c5b6e;
 }
 
 .video-responsive-contenedor {
   position: relative;
   padding-top:56.25%;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px; */
 }
 
 .video-responsive-src {
@@ -401,8 +415,10 @@ video{
     margin:0;
   }
 
+  .video-demo-contenedor {
+    margin-bottom: 40px;
+  }
   /*Guitarras*/
-
 }
 
 /*Medida de un ipad*/
@@ -465,9 +481,31 @@ video{
   .menu ul {
     padding: 0;
   }
+
+/* Guitarra */
+
+  .video-demo-contenedor{
+    margin: 0 10px 40px 10px;
+  }  
+
+  /*.video-demo{
+    margin: 0 10px;
+  }*/
+/* Guitarra */
+
 }
 
 @media screen and (max-width: 500px){
+
+/*portada*/
+ 
+  .portada .button {
+    display: block;
+  }
+
+  .precios .header .logotipo {
+    margin: 50px 0;
+  }
 
   .header{
     position: static;
@@ -481,10 +519,14 @@ video{
     position: static;
   }
 
+  .burguer-button {
+    display: inline-block;
+  }
+
   .menu {
     /*border: 1px solid red;*/
     background: rgba(255, 60, 88, 0.8);
-    position: absolute;
+    position: fixed;
     left:-100%;
     width:100%;
     top:0;
@@ -500,9 +542,7 @@ video{
     left:0;
   }
 
-  /*portada*/
-
-  .menu ul {
+   .menu ul {
     flex:1;
   }
   .menu li{
@@ -534,6 +574,7 @@ video{
   /*portada*/
 
   /*guitarras*/
+
   .guitarras img {
     width: 200px;
     height: auto;
@@ -543,6 +584,14 @@ video{
     font-size: 30px;
   }
   /*guitarras*/
+
+  /*footer*/
+  .col2 {
+    align-items: stretch;
+  }
+
+  /*footer*/
+
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:2) {

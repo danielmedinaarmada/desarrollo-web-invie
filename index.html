@@ -38,10 +38,14 @@
     </section>
     <section id="guitarras" class="guitarras contenedor"> <!-- guitarras -->
       <h2>Nuestra guitarras</h2><!-- titulo -->
-      <div class="video-responsive-contenedor">
-        <iframe class="video-responsive-src" width="560" height="315" src="https://www.youtube.com/embed/R1dW8M4EqYY" frameborder="0" allowfullscreen></iframe>
+      <div class="video-demo-contenedor">
+        <div class="video-demo">
+          <div class="video-responsive-contenedor">
+            <iframe class="video-responsive-src" width="560" height="315" src="https://www.youtube.com/embed/R1dW8M4EqYY" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
       </div>
-      <video src="video/320x240.ogg"></video>
+     <!--  <video src="video/320x240.ogg"></video> -->
       <article class="guitarra"> <!-- guitarra 1 -->
         <img class="derecha" data-src="images/invie-acustica.png|images/invie-acustica2x.png" alt="Guitarra Invie Acustica" width="350"/>
         <div class="contenedor-guitarra-a">
@@ -68,8 +72,8 @@
     <footer class="footer">
       <div class="contenedor">
         <div class="contacto"> 
-          <img data-src="images/invie-white.png|images/<invie-white2x class="png"></invie-white2x>" alt="logotipo blanco"/>
-          <a href="tel:+573024456678"><strong>Telefono</strong> <span>3024456678</span></a>
+          <img data-src="images/invie-white.png|images/invie-white2x>" alt="logotipo blanco"/>
+          <a href="tel:+573024456678"><strong>Teléfono</strong> <span>3024456678</span></a>
           <a href="mailto:contacto@invie.com"><strong>E-mail</strong> <span>contacto@invie.com</span></a>
         </div>
         <form class="formulario">
@@ -112,24 +116,36 @@
     </footer>
     <!-- busco en mi cdn la libreria: https://cdnjs.com/ be lazy-->
     <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>  -->
-    <script src="js/blazy.min.js"></script>
+    <script src="js/blazy.min.js"></script> <!--  be]Lazy.js - v1.8.2 -->
+    <script src="js/hammer.min.js"></script> <!-- hammer.js/2.0.8/-->
     <script>
       var consulta = window.matchMedia('(max-width: 500px)');
       consulta.addListener(mediaQuery);
       var burguerButton = document.getElementById('burguer-button');
       var menu = document.getElementById('menu');
+      
       function toggleMenu(){
         menu.classList.toggle('active');
+      };
+
+      function showMenu(){
+        menu.classList.add('active');
+      };
+
+      function hideMenu(){
+        menu.classList.remove('active');
       };
 
       function mediaQuery() {
         if (consulta.matches) {
           //se cumple la condición
           console.log('sí se cumple la condición');
+          burguerButton.addEventListener('click', toggleMenu);
           burguerButton.addEventListener('touchstart', toggleMenu);
         } else {
           //no se cumple la condición
           console.log('no se cumple la condición');
+          burguerButton.removeEventListener('click', toggleMenu);
           burguerButton.removeEventListener('touchstart', toggleMenu);
         }
       };
@@ -142,6 +158,18 @@
           // options
           selector:'img'
       });
+
+
+      //Gestos touch
+      var body = document.body;
+
+      var gestos = new Hammer(body);
+      gestos.on('swipeleft', hideMenu);
+
+
+      var gestos = new Hammer(body);
+      gestos.on('swiperight', showMenu);
+      
 
     </script>
   </body>

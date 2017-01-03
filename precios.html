@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/invie.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
   </head>
-  <body>
+  <body class="precios">
       <header id="header" class="header background"> <!-- header -->
         <div class="contenedor">
           <figure class="logotipo"> <!-- logotipo -->
@@ -129,10 +129,12 @@
           if (consulta.matches) {
             //se cumple la condición
             console.log('sí se cumple la condición');
+            burguerButton.addEventListener('click', toggleMenu);
             burguerButton.addEventListener('touchstart', toggleMenu);
           } else {
             //no se cumple la condición
             console.log('no se cumple la condición');
+            burguerButton.removeEventListener('click', toggleMenu);
             burguerButton.removeEventListener('touchstart', toggleMenu);
           }
         };
