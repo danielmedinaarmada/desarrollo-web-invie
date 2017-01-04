@@ -455,8 +455,12 @@ video{
     margin:0;
   }
 
+  input[type="text"] {
+    margin-bottom: 25px;
+  }
+
   input[type="text"], input[type="email"]{
-    font-size: 16px;
+    font-size: 20px;
     padding:5px;
   }
   textarea{
